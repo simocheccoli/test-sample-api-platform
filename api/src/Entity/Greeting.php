@@ -5,13 +5,25 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Dto\CreateGreeting;
+use App\Dto\GreetingOutput;
 
 /**
  * This is a dummy entity. Remove it!
  *
  * @ORM\Entity
+ *
+ * @ApiResource(
+ *     collectionOperations={
+ *         "create"={
+ *             "method"="POST",
+ *             "input"=CreateGreeting::class,
+ *             "output"=GreetingOutput::class
+ *         },
+ *         "get"
+ *     }
+ * )
  */
-#[ApiResource(mercure: true)]
 class Greeting
 {
     /**
