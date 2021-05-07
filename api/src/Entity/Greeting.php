@@ -15,7 +15,7 @@ use App\Dto\GreetingOutput;
  *
  * @ApiResource(
  *     collectionOperations={
- *         "create"={
+ *         "post"={
  *             "method"="POST",
  *             "input"=CreateGreeting::class,
  *             "output"=GreetingOutput::class
