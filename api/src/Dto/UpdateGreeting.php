@@ -5,7 +5,7 @@ namespace App\Dto;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-final class CreateGreeting
+final class UpdateGreeting
 {
 
     /**
@@ -13,5 +13,5 @@ final class CreateGreeting
      *
      */
     #[Assert\NotBlank]
-    public string $nameToCreate = '';
+    public string $nameToUpdate = '';
 }

@@ -4,11 +4,12 @@
 namespace App\DataTransformer;
 
 use ApiPlatform\Core\DataTransformer\DataTransformerInterface;
+use ApiPlatform\Core\Serializer\AbstractItemNormalizer;
 use ApiPlatform\Core\Validator\ValidatorInterface;
-use App\Dto\CreateGreeting;
+use App\Dto\UpdateGreeting;
 use App\Entity\Greeting;
 
-final class CreateGreetingDataTransformer implements DataTransformerInterface
+final class UpdateGreetingDataTransformer implements DataTransformerInterface
 {
 
     private $validator;
@@ -23,10 +24,12 @@ final class CreateGreetingDataTransformer implements DataTransformerInterface
      */
     public function transform($data, string $to, array $context = [])
     {
+
         $this->validator->validate($data);
 
-        $greeting = new Greeting();
-        $greeting->name = $data->nameToCreate;
+        $greeting = $context[AbstractItemNormalizer::OBJECT_TO_POPULATE];
+
+        $greeting->name = $data->nameToUpdate;
         return $greeting;
     }
 
@@ -41,7 +44,6 @@ final class CreateGreetingDataTransformer implements DataTransformerInterface
             return false;
         }
 
-
-        return Greeting::class === $to && CreateGreeting::class == ($context['input']['class'] ?? null);
+        return Greeting::class === $to && UpdateGreeting::class == ($context['input']['class'] ?? null);
     }
 }

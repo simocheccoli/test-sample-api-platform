@@ -32,3 +32,4 @@ services:
 
     'App\DataTransformer\CreateGreetingDataTransformer': ~
     'App\DataTransformer\GreetingOutputDataTransformer': ~
+    'App\DataTransformer\UpdateGreetingDataTransformer': ~

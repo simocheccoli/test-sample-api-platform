@@ -4,10 +4,8 @@
 namespace App\Dto;
 
 
-class GreetingOutput
+final class GreetingOutput
 {
-
-
 
     /**
      * A nice person

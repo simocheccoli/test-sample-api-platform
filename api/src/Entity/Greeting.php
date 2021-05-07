@@ -4,8 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use App\Dto\CreateGreeting;
+use App\Dto\UpdateGreeting;
 use App\Dto\GreetingOutput;
 
 /**
@@ -21,10 +21,19 @@ use App\Dto\GreetingOutput;
  *             "output"=GreetingOutput::class
  *         },
  *         "get"
+ *     },
+ *     itemOperations={
+ *          "get",
+ *          "delete",
+ *          "put"={
+ *             "method"="PUT",
+ *             "input"=UpdateGreeting::class,
+ *             "output"=GreetingOutput::class
+ *          }
  *     }
  * )
  */
-class Greeting
+final class Greeting
 {
     /**
      * The entity ID
@@ -40,7 +49,6 @@ class Greeting
      *
      * @ORM\Column
      */
-    #[Assert\NotBlank]
     public string $name = '';
 
     public function getId(): ?int
